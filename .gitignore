@@ -1,3 +1,9 @@
 # Byte-compiled / optimized / DLL files
+
 __pycache__/
-feeds_old
+
+feeds
+feed_folder
+feed_folder_test
+
+git_sync.sh

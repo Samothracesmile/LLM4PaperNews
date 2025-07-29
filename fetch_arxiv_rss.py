@@ -23,7 +23,7 @@ def parse_entries(feed):
 def save_as_markdown(papers, file_path):
     """Save paper list to Markdown file."""
     with open(file_path, 'w', encoding='utf-8') as f:
-        f.write(f"# arXiv cs.AI Latest Papers ({len(papers)} total)\n\n")
+        f.write(f"# arXiv Latest Papers ({len(papers)} total)\n\n")
         f.write(f"Date: {datetime.date.today()}\n\n")
         for p in papers:
             f.write(f"## {p['title']}\n")
