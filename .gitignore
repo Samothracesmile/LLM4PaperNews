@@ -11,9 +11,6 @@ git_sync.sh
 paper_feeder0.py
 paper_feeder_saved.py
 
-
 fetch_arxiv_rss.py
 fetch_pubmed_rss.py
 fetch_rss.py
-
-
