@@ -20,7 +20,7 @@ ITERATION_NUM = 3
 def job(summarize=True):
 
     timestamp = datetime.now().strftime('%Y%m%d_%H')
-    feed_dir = f'/ifs/loni/faculty/shi/spectrum/yxia/github_2025/LLM/LLM4PaperNews/feed_folder/feeds_{timestamp}'
+    feed_dir = f'./feed_folder/feeds_{timestamp}'
     os.makedirs(feed_dir, exist_ok=True)
 
     fetcher = UniversalRSSFetcher()
