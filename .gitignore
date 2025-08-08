@@ -7,3 +7,6 @@ feed_folder_test
 feeds
 
 git_sync.sh
+
+paper_feeder.py
+paper_feeder_saved.py

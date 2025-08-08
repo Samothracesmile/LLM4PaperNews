@@ -48,20 +48,6 @@ def save_as_html(papers, file_path):
     print(f"HTML saved to: {file_path}")
 
 
-def send_email(papers, smtp_server, port, sender_email, sender_password, receiver_email):
-    """Send paper list as an email."""
-    html_content = "<h1>Today's arXiv cs.AI Papers</h1>"
-    for p in papers:
-        html_content += f"<h2>{p['title']}</h2><p><b>Authors:</b> {p['authors']}</p><p><b>Abstract:</b> {p['summary']}</p><p><a href='{p['link']}'>View Paper</a></p><hr>"
-    msg = MIMEText(html_content, 'html', 'utf-8')
-    msg['Subject'] = "Daily arXiv cs.AI Update"
-    msg['From'] = sender_email
-    msg['To'] = receiver_email
-    with smtplib.SMTP_SSL(smtp_server, port) as server:
-        server.login(sender_email, sender_password)
-        server.send_message(msg)
-    print(f"Email sent to: {receiver_email}")
-
 def print_to_console(papers):
     """Print paper list to console."""
     print(f"=== arXiv cs.AI Today's Papers: {len(papers)} ===")
