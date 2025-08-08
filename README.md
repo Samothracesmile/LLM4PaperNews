@@ -1,47 +1,56 @@
 # LLM4PaperNews
 
-LLM4PaperNews fetches paper listings from arXiv and PubMed RSS feeds and automatically summarizes them using a local LLM. Generated summaries and original listings are saved in Markdown and converted to PDF.
+LLM4PaperNews fetches paper listings from arXiv and PubMed RSS feeds and automatically summarizes them with a local LLM. The tool saves both the generated summaries and original listings as Markdown files and can convert them to PDF.
 
 ## Features
 
-- **RSS Fetching**
-  - `fetch_arxiv_rss.py` downloads the latest `cs.AI` entries from arXiv.
-  - `fetch_pubmed_rss.py` downloads PubMed search results using a predefined RSS URL.
-- **Summarization**
-  - `paper_reader_kernel.py` interacts with a local LLM via `ollama run deepseek-r1:70b` to create short summaries.
-  - Markdown files are converted to PDF using `md2pdf`.
-- **Scheduling**
-  - `paper_feeder.py` runs twice a day (08:15 and 20:15) to fetch new feeds and produce summaries.
-- **Output**
-  - Files are written to the `feeds/` directory; sample output is included in the repository.
+### RSS fetching
+- `fetch_arxiv_rss.py` and `fetch_pubmed_rss.py` download the latest entries from configured feeds.
+- `universal_rss_fetcher.py` automatically detects feed types (arXiv, PubMed, Wiley, etc.) and provides flexible field extraction with plain‑text, Markdown, or PDF output.
 
-## Requirements
+### Summarization
+- `paper_reader_kernel.py` interacts with a local LLM via `ollama run deepseek-r1:70b` to create concise summaries.
+- Generated Markdown can be converted to PDF using `md2pdf`.
 
-- Python 3
-- Packages: `feedparser`, `PyMuPDF` (`fitz`), `fpdf`, `schedule`
-- External commands: `ollama` (with the `deepseek-r1:70b` model) and `md2pdf`
+### Scheduling
+- `paper_feeder.py` runs twice a day (08:15 and 20:15) to fetch new feeds and produce summaries.
 
-Install Python dependencies with:
+### Output
+- Files are written to the `feeds/` directory; sample output is included in the repository.
+
+## Installation
 
 ```bash
-pip install feedparser PyMuPDF fpdf schedule
+pip install feedparser PyMuPDF fpdf schedule beautifulsoup4
 ```
 
-Ensure `ollama` and `md2pdf` are available in your `PATH`.
+Ensure that `ollama` (with the `deepseek-r1:70b` model) and `md2pdf` are installed and available in your `PATH`.
 
 ## Usage
 
-1. Run `paper_feeder.py` to start the scheduled job:
+### Scheduled run
 
 ```bash
 python paper_feeder.py
 ```
 
-The script fetches new RSS entries, summarizes them using the LLM, and saves results in the `feeds/` folder.
+This fetches new RSS entries, summarizes them with the LLM, and saves results in the `feeds/` folder.
 
-2. To fetch a feed once without scheduling, call `fetch_arxiv_rss()` or `fetch_pubmed_rss()` from the corresponding scripts.
+### One‑off fetch
 
-Edit the `feed_dir` path in `paper_feeder.py` if you want to store output elsewhere.
+```bash
+python fetch_arxiv_rss.py
+python fetch_pubmed_rss.py
+```
+
+Or use the universal fetcher:
+
+```python
+from universal_rss_fetcher import fetch_rss_universal
+fetch_rss_universal("https://export.arxiv.org/rss/cs.AI")
+```
+
+Edit the `feed_dir` path in `paper_feeder.py` to store output elsewhere. See `example_usage.py` and [`README_universal_rss.md`](README_universal_rss.md) for additional examples.
 
 ## License
 
