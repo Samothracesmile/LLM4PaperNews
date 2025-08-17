@@ -5,6 +5,7 @@ __pycache__
 feed_folder
 feed_folder_test
 feeds
+tmp
 
 git_sync.sh
 
@@ -14,3 +15,4 @@ paper_feeder_saved.py
 fetch_arxiv_rss.py
 fetch_pubmed_rss.py
 fetch_rss.py
+

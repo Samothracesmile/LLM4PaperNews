@@ -40,9 +40,9 @@ def job(summarize=True):
         # 'physics.med-ph': 'https://export.arxiv.org/rss/physics.med-ph'  # 医学物理
     }
     for category, url in arxiv_categories.items():
-        original_md = f"{feed_dir}/arxiv_org{category}_{timestamp}x.md"
-        original_pdf = f"{feed_dir}/arxiv_org{category}_{timestamp}x.pdf"
-        summary_md = f"{feed_dir}/arxiv_summary{category}_{timestamp}x.md"
+        original_md = f"{feed_dir}/arxiv_org{category}_{timestamp}.md"
+        original_pdf = f"{feed_dir}/arxiv_org{category}_{timestamp}.pdf"
+        summary_md = f"{feed_dir}/arxiv_summary{category}_{timestamp}.md"
         summary_pdf = summary_md.replace('.md', '.pdf')
 
         print(f"\n正在抓取 arXiv {category} 类别...")
