@@ -8,6 +8,7 @@ feeds
 tmp
 
 git_sync.sh
+git_ignore.sh
 
 paper_feeder0.py
 paper_feeder_saved.py
