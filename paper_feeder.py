@@ -5,7 +5,7 @@ import time
 # from fetch_arxiv_rss import fetch_arxiv_rss
 from paper_reader_kernel import ask_deepseek
 from datetime import datetime
-from universal_rss_fetcher import UniversalRSSFetcher, fetch_rss_universal
+from universal_rss_fetcher2 import UniversalRSSFetcher, fetch_rss_universal
 from paper_reader_kernel import run_shell_command
 
 """Automated RSS feeder for arXiv and PubMed.

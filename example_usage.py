@@ -5,7 +5,7 @@
 演示如何使用UniversalRSSFetcher处理不同类型的RSS源
 """
 
-from universal_rss_fetcher import UniversalRSSFetcher, fetch_rss_universal
+from universal_rss_fetcher2 import UniversalRSSFetcher, fetch_rss_universal
 import datetime
 
 def example_arxiv_categories():
@@ -170,7 +170,7 @@ def example_compatibility():
     print("\n=== 示例6: 兼容性函数 ===")
     
     # 这些函数保持与原有脚本相同的接口
-    from universal_rss_fetcher import fetch_pubmed_rss, fetch_arxiv_rss, fetch_wiley_feed
+    from universal_rss_fetcher2 import fetch_pubmed_rss, fetch_arxiv_rss, fetch_wiley_feed
     
     # 使用原有接口
     pubmed_result = fetch_pubmed_rss(

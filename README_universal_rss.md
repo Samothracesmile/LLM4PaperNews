@@ -20,7 +20,7 @@ pip install feedparser beautifulsoup4
 ### 基本使用
 
 ```python
-from universal_rss_fetcher import fetch_rss_universal
+from universal_rss_fetcher2 import fetch_rss_universal
 
 # 自动检测RSS源类型
 result = fetch_rss_universal(
@@ -44,7 +44,7 @@ result = fetch_rss_universal(
 ### 使用类接口
 
 ```python
-from universal_rss_fetcher import UniversalRSSFetcher
+from universal_rss_fetcher2 import UniversalRSSFetcher
 
 fetcher = UniversalRSSFetcher()
 result = fetcher.fetch_universal_rss(
@@ -79,7 +79,7 @@ result = fetcher.fetch_universal_rss(
 ### 自定义配置
 
 ```python
-from universal_rss_fetcher import UniversalRSSFetcher
+from universal_rss_fetcher2 import UniversalRSSFetcher
 
 # 定义自定义配置
 custom_config = {
@@ -134,7 +134,7 @@ result = fetcher.fetch_universal_rss(
 为了保持与原有脚本的兼容性，提供了以下函数：
 
 ```python
-from universal_rss_fetcher import fetch_pubmed_rss, fetch_arxiv_rss, fetch_wiley_feed
+from universal_rss_fetcher2 import fetch_pubmed_rss, fetch_arxiv_rss, fetch_wiley_feed
 
 # 与原有脚本完全相同的接口
 pubmed_result = fetch_pubmed_rss(md_file="pubmed.md")

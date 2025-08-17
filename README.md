@@ -46,7 +46,7 @@ python fetch_pubmed_rss.py
 Or use the universal fetcher:
 
 ```python
-from universal_rss_fetcher import fetch_rss_universal
+from universal_rss_fetcher2 import fetch_rss_universal
 fetch_rss_universal("https://export.arxiv.org/rss/cs.AI")
 ```
 

@@ -16,3 +16,8 @@ fetch_arxiv_rss.py
 fetch_pubmed_rss.py
 fetch_rss.py
 
+.git_sync
+
+universal_rss_fetcher.py
+example_usage.py
+example_usage1.py
