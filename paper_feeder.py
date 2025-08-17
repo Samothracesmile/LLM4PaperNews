@@ -32,10 +32,10 @@ def job(summarize=True):
     arxiv_categories = {
         'cs.AI': 'https://export.arxiv.org/rss/cs.AI',  # 人工智能
         'cs.LG': 'https://export.arxiv.org/rss/cs.LG',  # 机器学习
-        # 'cs.CV': 'https://export.arxiv.org/rss/cs.CV',  # 计算机视觉
-        # 'cs.CL': 'https://export.arxiv.org/rss/cs.CL',  # 计算语言学
+        'cs.CV': 'https://export.arxiv.org/rss/cs.CV',  # 计算机视觉
+        'cs.CL': 'https://export.arxiv.org/rss/cs.CL',  # 计算语言学
         # 'cs.IR': 'https://export.arxiv.org/rss/cs.IR',  # 信息检索
-        # 'stat.ML': 'https://export.arxiv.org/rss/stat.ML',  # 统计机器学习
+        'stat.ML': 'https://export.arxiv.org/rss/stat.ML',  # 统计机器学习
         # 'q-bio.QM': 'https://export.arxiv.org/rss/q-bio.QM',  # 定量方法
         # 'physics.med-ph': 'https://export.arxiv.org/rss/physics.med-ph'  # 医学物理
     }
@@ -79,9 +79,9 @@ def job(summarize=True):
             )
     #############################################
 
-job()
-schedule.every().day.at("08:15").do(job)
-schedule.every().day.at("20:15").do(job)
+# job()
+# schedule.every().day.at("08:15").do(job)
+schedule.every().day.at("23:00").do(job)
 
 while True:
     schedule.run_pending()

@@ -3,19 +3,11 @@
 __pycache__
 
 feed_folder
-feed_folder_test
-feeds
+news_feeds
 tmp
 
 git_sync.sh
 git_ignore.sh
-
-paper_feeder0.py
-paper_feeder_saved.py
-
-fetch_arxiv_rss.py
-fetch_pubmed_rss.py
-fetch_rss.py
 
 universal_rss_fetcher.py
 example_usage1.py
