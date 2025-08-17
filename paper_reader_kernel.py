@@ -34,12 +34,12 @@ def extract_post_think_text(full_text):
 
 # Query DeepSeek model via Ollama subprocess
 # Debug: Print prompt length and context lengthS
-def query_deepseek(prompt_text, context_text):
+def query_deepseek(prompt_text, context_text, llm_model="deepseek-r1:70b"):
     if DEBUG:
         print(f"[DEBUG] Querying DeepSeek: prompt length={len(prompt_text)}, context length={len(context_text)}")
     full_prompt = f"{prompt_text}\n\nHere is the content:\n{context_text}"
     process = subprocess.run(
-        ["ollama", "run", "deepseek-r1:70b"],
+        ["ollama", "run", llm_model],  
         input=full_prompt,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -67,7 +67,7 @@ def run_shell_command(command, *args):
 
 # Main workflow: Query DeepSeek multiple times, merge results, save markdown and PDF
 
-def ask_deepseek(prompt_text, content_text, markdown_filename, markdown_filename_pdf, iteration_num=3):
+def ask_deepseek(prompt_text, content_text, markdown_filename, markdown_filename_pdf, llm_model="deepseek-r1:70b", llm_model_merge="deepseek-r1:70b", iteration_num=3):
     if DEBUG:
         print(f"[DEBUG] ask_deepseek: markdown_filename={markdown_filename}, iteration_num={iteration_num}")
     if not os.path.exists(markdown_filename):
@@ -75,10 +75,10 @@ def ask_deepseek(prompt_text, content_text, markdown_filename, markdown_filename
         for ver_idx in range(iteration_num):
             if DEBUG:
                 print(f'[DEBUG] In prompt iteration {ver_idx} ...')
-            answer = query_deepseek(prompt_text, content_text)
+            answer = query_deepseek(prompt_text, content_text, llm_model=llm_model)
             main_text = extract_post_think_text(answer)
             all_text = all_text + f'results {ver_idx}:' + main_text
-        answer = query_deepseek('Merge all result to one!', all_text)
+        answer = query_deepseek('Merge all result to one!', all_text,  llm_model=llm_model_merge)
         main_text = extract_post_think_text(answer)
         final_text = main_text
         with open(markdown_filename, "w", encoding="utf-8") as f:
